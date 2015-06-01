@@ -20,6 +20,10 @@ signal.signal(signal.SIGINT, end_read)
 # Create an object of the class MFRC522
 MIFAREReader = MFRC522.MFRC522()
 
+# Welcome message
+print "Welcome to the MFRC522 data write example"
+print "Press Ctrl-C to stop."
+
 # This loop keeps checking for chips. If one is near it will get the UID and authenticate
 while continue_reading:
     
@@ -59,6 +63,7 @@ while continue_reading:
             for x in range(0,16):
                 data.append(0xFF)
 
+            sector = int(raw_input("Which sector would you like to write to? (Enter integer)\n"))
             print "Sector 8 looked like this:"
             # Read block 8
             MIFAREReader.MFRC522_Read(8)
