@@ -64,10 +64,10 @@ while continue_reading:
             for x in range(0,16):
                 data.append(0xFF)
 
-            sector_id = int(raw_input("Which sector would you like to write to? (Enter integer 1 through 8)\n"))
-            print "Sector " + str(sector_id) + " looked like this:"
+            #sector_id = int(raw_input("Which sector would you like to write to? (Enter integer 1 through 8)\n"))
+            print "Sector " + str(8) + " looked like this:"
             # Read desired block
-            MIFAREReader.MFRC522_Read(int(sector_id))
+            MIFAREReader.MFRC522_Read(8)
             print "\n"
 
             print "There are 16 slots per sector, please enter an integer 0 - 255 to write to each slot"
@@ -92,12 +92,12 @@ while continue_reading:
                     card_detected = True
 
             # Write the data
-            MIFAREReader.MFRC522_Write(int(sector_id), data)
+            MIFAREReader.MFRC522_Write(8, data)
             print "\n"
 
             print "It now looks like this:"
             # Check to see if it was written
-            MIFAREReader.MFRC522_Read(int(sector_id))
+            MIFAREReader.MFRC522_Read(8)
             print "\n"
 
             # data = []
