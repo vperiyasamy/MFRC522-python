@@ -13,6 +13,7 @@ def end_read(signal,frame):
     print "Ctrl+C captured, ending read."
     continue_reading = False
     GPIO.cleanup()
+    exit(0)
 
 # Hook the SIGINT
 signal.signal(signal.SIGINT, end_read)
@@ -63,26 +64,25 @@ while continue_reading:
             for x in range(0,16):
                 data.append(0xFF)
 
-            sector_id = int(raw_input("Which sector would you like to write to? (Enter integer 1 through 8)\n"))
-            print "Sector " + str(sector_id) + " looked like this:"
+            #sector_id = int(raw_input("Which sector would you like to write to? (Enter integer 1 through 8)\n"))
+            print "Sector " + str(8) + " looked like this:"
             # Read desired block
-            MIFAREReader.MFRC522_Read(sector_id)
+            MIFAREReader.MFRC522_Read(8)
             print "\n"
 
             print "There are 16 slots per sector, please enter an integer 0 through 255 to write to each slot"
             data = []
             for i in range(0, 16):
-                print "\n"
-                slot = "Slot " + str(i) + ": "
+                slot = "Slot " + str(i + 1) + ": "
                 data.append((raw_input(slot)))
 
             # Write the data
-            MIFAREReader.MFRC522_Write(sector_id, data)
+            MIFAREReader.MFRC522_Write(8, data)
             print "\n"
 
             print "It now looks like this:"
             # Check to see if it was written
-            MIFAREReader.MFRC522_Read(sector_id)
+            MIFAREReader.MFRC522_Read(8)
             print "\n"
 
             # data = []
