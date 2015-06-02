@@ -106,5 +106,6 @@ while continue_reading:
 
             # Make sure to stop reading for cards
             continue_reading = False
+            print "Exiting Successfully. See you next time!"
         else:
             print "Authentication error"
