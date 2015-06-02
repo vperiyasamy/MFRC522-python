@@ -78,6 +78,19 @@ while continue_reading:
                 data.append(int(raw_input(slot)))
                 #data.append(int(value))
 
+
+            print "Please scan the card for a few seconds to write the data"
+            card_detected = False
+            while not (card_detected):
+
+                #scan for card
+                (status,TagType) = MIFAREReader.MFRC522_Request(MIFAREReader.PICC_REQIDL)
+            
+                # If a card is found
+                if status == MIFAREReader.MI_OK:
+                    print "Card detected"
+                    card_detected = True
+
             # Write the data
             MIFAREReader.MFRC522_Write(int(sector_id), data)
             print "\n"
