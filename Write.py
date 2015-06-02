@@ -70,11 +70,13 @@ while continue_reading:
             MIFAREReader.MFRC522_Read(8)
             print "\n"
 
-            print "There are 16 slots per sector, please enter an integer 0 through 255 to write to each slot"
+            print "There are 16 slots per sector, please enter a value of the form '0x__' to write to each slot"
             data = []
+            value = raw_input("Value: ")
             for i in range(0, 16):
-                slot = "Slot " + str(i + 1) + ": "
-                data.append((raw_input(slot)))
+                #slot = "Slot " + str(i + 1) + ": "
+                #data.append((raw_input(slot)))
+                data.append(value)
 
             # Write the data
             MIFAREReader.MFRC522_Write(8, data)
