@@ -60,7 +60,7 @@ while continue_reading:
             # Variable for the data to write
             data = []
             for x in range(0, 16):
-                data.append(0)
+                data.append('-')
 
             #sector_id = int(raw_input("Which sector would you like to write to? (Enter integer 1 through 8)\n"))
             print "Sector " + str(8) + " looked like this:"
