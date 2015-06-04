@@ -69,24 +69,11 @@ while continue_reading:
             print "\n"
 
             print "Please enter one 32-bit integer you would like to store."
+            input = int(raw_input("Value: "))
 
-            value = hex(int(raw_input("Value: ")))
-            for index in range(0, len(value) - 2):
-                print value[index + 2]
-                data[index] = int(value[index + 2])
-
-
-            #print "Please scan the card for a few seconds to write the data"
-            #card_detected = False
-            #while not (card_detected):
-
-                #scan for card
-             #   (status,TagType) = MIFAREReader.MFRC522_Request(MIFAREReader.PICC_REQIDL)
-            
-                # If a card is found
-             #   if status == MIFAREReader.MI_OK:
-            #        print "Card detected"
-            #        card_detected = True
+            value = bin(input)[2:].zfill(16)
+            for index in range(0, 16):
+                data[index] = int(value[index])
 
             # Write the data
             MIFAREReader.MFRC522_Write(8, data)
