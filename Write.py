@@ -60,7 +60,7 @@ while continue_reading:
             # Variable for the data to write
             data = []
             for x in range(0, 16):
-                data.append('-')
+                data.append(0)
 
             #sector_id = int(raw_input("Which sector would you like to write to? (Enter integer 1 through 8)\n"))
             print "Sector " + str(8) + " looked like this:"
@@ -72,8 +72,8 @@ while continue_reading:
 
             value = hex(int(raw_input("Value: ")))
             for index in range(0, len(value) - 2):
-                print value[index]
-                data[index] = value[index + 2]
+                print value[index + 2]
+                data[index] = int(value[index + 2])
 
 
             #print "Please scan the card for a few seconds to write the data"
