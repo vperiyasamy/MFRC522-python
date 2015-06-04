@@ -71,9 +71,9 @@ while continue_reading:
             print "Please enter one 32-bit integer you would like to store."
 
             value = hex(int(raw_input("Value: ")))
-            for index in range(0, len(value)):
+            for index in range(0, len(value) - 2):
                 print value[index]
-                data[index] = value[index]
+                data[index] = value[index + 2]
 
 
             #print "Please scan the card for a few seconds to write the data"
