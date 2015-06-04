@@ -72,6 +72,7 @@ while continue_reading:
 
             value = hex(int(raw_input("Value: ")))
             for index in range(0, len(value)):
+                print value[index]
                 data[index] = value[index]
 
 
