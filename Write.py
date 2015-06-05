@@ -68,12 +68,16 @@ while continue_reading:
             MIFAREReader.MFRC522_Read(8)
             print "\n"
 
-            print "Please enter one 16-bit integer you would like to store."
+            print "Please enter one 32-bit integer you would like to store."
             input = int(raw_input("Value: "))
 
-            value = bin(input)[2:].zfill(16)
-            for index in range(0, 16):
-                data[index] = int(value[index])
+            value = hex(input)[2:].zfill(8)
+            for index in range(0, 8):
+                data[index] = int(value[index], 16)
+
+            #value = bin(input)[2:].zfill(16)
+            #for index in range(0, 16):
+            #    data[index] = int(value[index])
 
             # Write the data
             MIFAREReader.MFRC522_Write(8, data)
